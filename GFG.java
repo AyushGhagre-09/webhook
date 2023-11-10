@@ -1,4 +1,3 @@
-// Java program for addition of two matrices
 
 import java.io.*;
 

@@ -3,7 +3,7 @@ import java.io.*;
 
 class GFG {
 
-	// Function to print Matrix
+	
 	static void printMatrix(int M[][],
 							int rowSize,
 							int colSize)

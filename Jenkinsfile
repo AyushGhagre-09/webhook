@@ -20,6 +20,7 @@ node {
                    .collect { it.split()[1].replaceAll('refs/heads/', '') } 
             for (dir in branchList)
             {
+               echo  "for (dir in branchList)"
                 echo dir
             }
 

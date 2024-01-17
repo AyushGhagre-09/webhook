@@ -18,16 +18,20 @@ node {
             def branchList = remoteBranches.readLines()
                    .findAll { it.contains('refs/heads/') } 
                    .collect { it.split()[1].replaceAll('refs/heads/', '') } 
+            for (dir in branchList)
+            {
+                echo dir
+            }
 
            
            def command = "dir /B /A:D ${workspace}"
             
            def workspaceDirs = bat(script: command, returnStdout: true).trim().readLines().drop(1)
 
-            for (dir in workspaceDirs)
-            {
-                echo dir
-            }
+            // for (dir in workspaceDirs)
+            // {
+            //     echo dir
+            // }
             
            workspaceDirs.each { dir ->
             if (!branchList.contains(dir)) {

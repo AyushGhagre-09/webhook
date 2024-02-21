@@ -1,51 +1,32 @@
 node {
-    properties([
-        pipelineTriggers([
-            cron('H/5 * * * *')
-        ])
-    ])
-
-   def workspace = "C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\clear"
-    def REPO_URL = "https://github.com/Ayushghagre/clearWorkspace.git" 
-    currentBuild.result = "SUCCESS"
+    // Define variables for repository
+    def repoUrl = 'https://github.com/AyushGhagre-09/webhook.git'
+    
 
     try {
-        
-
-        stage("clearing up Workspace") {
-            def remoteBranches = bat(script: "git ls-remote --heads ${REPO_URL}", returnStdout: true).trim()
-
-            def branchList = remoteBranches.readLines()
-                   .findAll { it.contains('refs/heads/') } 
-                   .collect { it.split()[1].replaceAll('refs/heads/', '') } 
-            for (dir in branchList)
-            {
-               echo  "for (dir in branchList)"
-                echo dir
-            }
-
-           
-           def command = "dir /B /A:D ${workspace}"
-            
-           def workspaceDirs = bat(script: command, returnStdout: true).trim().readLines().drop(1)
-
-            // for (dir in workspaceDirs)
-            // {
-            //     echo dir
-            // }
-            
-           workspaceDirs.each { dir ->
-            if (!branchList.contains(dir)) {
-                echo "Deleting workspace for branch: ${dir}"
-                bat "rmdir /S /Q ${workspace}\\${dir}"
-            }
+        stage('Clone repository') {
+            // This will use the credentials you've specified in the job configuration
+            git url: repoUrl
         }
-          
 
+        stage('Add file and commit') {
+            // Add a file to the repo
+            writeFile file: 'example.txt', text: 'This is an example file'
+            
+            
+            
+            // Git add and commit
+            bat 'git add example.txt'
+            bat 'git commit -m "Add example file"'
         }
-    } catch (Exception e) {
-        echo "Encountered An Exception"
-        currentBuild.result = "FAILURE"
-        echo e.toString()
+
+        stage('Push changes') {
+            // This assumes that your credentials are correctly set up for Git to use them automatically
+            bat 'git push'
+        }
+    } catch (e) {
+        // If there are any exceptions, mark the build as failed
+        currentBuild.result = 'FAILED'
+        throw e
     }
-} 
+}

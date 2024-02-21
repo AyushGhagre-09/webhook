@@ -21,7 +21,7 @@ node {
 
         stage('Push changes') {
            withCredentials([gitUsernamePassword(credentialsId: '9a1cc700-c524-44ff-b78c-cddc92a4785e', gitToolName: 'Git')]) {
-          bat "git push"
+          git push --set-upstream origin main
       }
         }
     } catch (e) {

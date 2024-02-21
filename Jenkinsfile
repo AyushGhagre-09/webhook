@@ -1,12 +1,11 @@
 node {
-    // Define variables for repository
-    def repoUrl = 'https://github.com/AyushGhagre-09/webhook.git'
+    
     
 
     try {
         stage('Clone repository') {
             // This will use the credentials you've specified in the job configuration
-            git url: repoUrl
+            git branch: 'main', url: 'https://github.com/AyushGhagre-09/webhook.git'
         }
 
         stage('Add file and commit') {

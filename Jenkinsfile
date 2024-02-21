@@ -24,7 +24,8 @@ node {
             bat "git push origin main"
                         
         }
-    } catch (e) {
+    } 
+    }catch (e) {
         // If there are any exceptions, mark the build as failed
         currentBuild.result = 'FAILED'
         throw e

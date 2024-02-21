@@ -20,9 +20,9 @@ node {
         }
 
         stage('Push changes') {
-           withCredentials([gitUsernamePassword(credentialsId: '9a1cc700-c524-44ff-b78c-cddc92a4785e', gitToolName: 'Git')]) {
-          git push  origin main
-      }
+            withCredentials([usernamePassword(credentialsId: '9a1cc700-c524-44ff-b78c-cddc92a4785e', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+            bat "git push origin main"
+                        
         }
     } catch (e) {
         // If there are any exceptions, mark the build as failed

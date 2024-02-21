@@ -21,7 +21,7 @@ node {
 
         stage('Push changes') {
             // This assumes that your credentials are correctly set up for Git to use them automatically
-            bat 'git push'
+            bat 'git push origin main'
         }
     } catch (e) {
         // If there are any exceptions, mark the build as failed

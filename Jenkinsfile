@@ -20,8 +20,8 @@ node {
         }
 
         stage('Push changes') {
-            // This assumes that your credentials are correctly set up for Git to use them automatically
-            bat 'git push origin main'
+            bat 'git branch'
+            bat 'git push --set-upstream origin main'
         }
     } catch (e) {
         // If there are any exceptions, mark the build as failed

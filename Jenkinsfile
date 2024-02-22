@@ -21,14 +21,21 @@ node {
 
         stage('Push changes')
          {
-            withCredentials([usernamePassword(credentialsId: '7df2302d-4ca7-41cc-a07f-81fc92b007d9', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+            // Use PAT for Git operations
+        withCredentials([string(credentialsId: 'git-pat', variable: 'GITHUB_TOKEN')]) {
             
-                
-                bat "git config user.email '${env.GIT_EMAIL}'"
-                bat "git config user.name '${env.GIT_NAME}'"
-                def encodedPassword = URLEncoder.encode(env.GIT_PASSWORD, 'UTF-8')
-                bat "git push https://${env.GIT_USERNAME}:${encodedPassword}@github.com/${env.GIT_USERNAME}/webhook.git"
-           
+                // Configure Git with user email and name
+                sh "git config user.email '${env.GIT_EMAIL}'"
+                sh "git config user.name '${env.GIT_NAME}'"
+
+                // Stage changes
+                sh "git add ."
+
+                // Commit changes
+                sh "git commit -m 'Triggered Build: ${env.BUILD_NUMBER}' || echo 'No changes to commit'"
+
+                // Push changes using the PAT for authentication
+                sh "git push https://${env.GITHUB_TOKEN}@github.com/${env.GIT_USERNAME}/webhook.git"
         }
            
          } 

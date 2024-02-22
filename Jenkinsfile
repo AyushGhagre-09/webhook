@@ -32,6 +32,7 @@ node {
                 bat "git add ."
 
                 def changesMade = bat(script: "git status --porcelain", returnStdout: true).trim()
+                echo changesMade
 
                if(changesMade) {
                 // There are changes to commit

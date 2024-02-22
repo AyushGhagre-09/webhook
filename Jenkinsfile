@@ -31,7 +31,7 @@ node {
                 
 
           // Push changes using the PAT for authentication
-                bat "git push https://${env.GITHUB_TOKEN}@github.com/${env.GIT_USERNAME}/webhook.git"
+                bat "git push https://%env.GITHUB_TOKEN%@github.com/%env.GIT_USERNAME%/webhook.git"
         }
            
          } 

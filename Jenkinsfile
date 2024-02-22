@@ -25,17 +25,17 @@ node {
         withCredentials([string(credentialsId: 'git-pat', variable: 'GITHUB_TOKEN')]) {
             
                 // Configure Git with user email and name
-                sh "git config user.email '${env.GIT_EMAIL}'"
-                sh "git config user.name '${env.GIT_NAME}'"
+                bat "git config user.email '${env.GIT_EMAIL}'"
+                bat "git config user.name '${env.GIT_NAME}'"
 
                 // Stage changes
-                sh "git add ."
+                bat "git add ."
 
                 // Commit changes
-                sh "git commit -m 'Triggered Build: ${env.BUILD_NUMBER}' || echo 'No changes to commit'"
+                bat "git commit -m 'Triggered Build: ${env.BUILD_NUMBER}' || echo 'No changes to commit'"
 
                 // Push changes using the PAT for authentication
-                sh "git push https://${env.GITHUB_TOKEN}@github.com/${env.GIT_USERNAME}/webhook.git"
+                bat "git push https://${env.GITHUB_TOKEN}@github.com/${env.GIT_USERNAME}/webhook.git"
         }
            
          } 

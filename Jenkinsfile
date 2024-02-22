@@ -19,12 +19,19 @@ node {
             bat 'git commit -m "Add example file"'
         }
 
-        stage('Push changes') {
-            withCredentials([usernamePassword(credentialsId: '9a1cc700-c524-44ff-b78c-cddc92a4785e', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
-            bat "git push origin main"
-                        
+        stage('Push changes')
+         {
+            withCredentials([usernamePassword(credentialsId: '9a1cc700-c524-44ff-b78c-cddc92a4785e', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+            
+                
+                bat "git config user.email '${env.GIT_EMAIL}'"
+                bat "git config user.name '${env.GIT_NAME}'"
+                def encodedPassword = URLEncoder.encode(env.GIT_PASSWORD, 'UTF-8')
+                bat "git push https://${env.GIT_USERNAME}:${encodedPassword}@github.com/${env.GIT_USERNAME}/webhook.git"
+           
         }
-    } 
+           
+         } 
     }catch (e) {
         // If there are any exceptions, mark the build as failed
         currentBuild.result = 'FAILED'

@@ -30,9 +30,9 @@ node {
 
                 
 
-           withCredentials([string(credentialsId: 'github-pat', variable: 'GITHUB_TOKEN')]) {
+           
            bat "git push https://${env.GITHUB_TOKEN}@github.com/%GIT_USERNAME%/webhook.git"
-}
+
 
         }
            

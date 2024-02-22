@@ -30,9 +30,9 @@ node {
 
                 
 
-           def t="https://${env.GITHUB_TOKEN}@github.com/AyushGhagre-09/webhook.git"
-            echo t
-           bat "git push https://${env.GITHUB_TOKEN}@github.com/AyushGhagre-09/webhook.git"
+           // def t="https://${env.GITHUB_TOKEN}@github.com/AyushGhagre-09/webhook.git"
+           //  echo t
+           bat 'git push https://%GITHUB_TOKEN%@github.com/AyushGhagre-09/webhook.git'
 
 
         }

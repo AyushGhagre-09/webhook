@@ -28,21 +28,7 @@ node {
                 bat "git config user.email '${env.GIT_EMAIL}'"
                 bat "git config user.name '${env.GIT_NAME}'"
 
-                // Stage changes
-                bat "git add ."
-
-                def changesMade = bat(script: "git status --porcelain", returnStdout: true).trim()
-                echo changesMade
-
-               if(changesMade) {
-                // There are changes to commit
-                bat "git commit -m \"Triggered Build: ${env.BUILD_NUMBER}\""
-             } else {
-            // No changes to commit, set the build result to success and exit gracefully
-            echo "No changes to commit. Exiting gracefully."
-            currentBuild.result = 'SUCCESS'
-            return // This exits the current stage/node but marks the build as successful
-        }
+                
 
 
                 // Push changes using the PAT for authentication

@@ -32,7 +32,7 @@ node {
                 bat "git add ."
 
                 // Commit changes
-                bat "git commit -m 'Triggered Build: ${env.BUILD_NUMBER}' || echo 'No changes to commit'"
+                bat "git commit -m 'Triggered Build: ${env.BUILD_NUMBER}'"
 
                 // Push changes using the PAT for authentication
                 bat "git push https://${env.GITHUB_TOKEN}@github.com/${env.GIT_USERNAME}/webhook.git"

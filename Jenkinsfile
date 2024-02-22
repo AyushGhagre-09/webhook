@@ -31,7 +31,7 @@ node {
                 
 
            
-           bat "git push https://${env.GITHUB_TOKEN}@github.com/%GIT_USERNAME%/webhook.git"
+           bat "git push https://${env.GITHUB_TOKEN}@github.com/AyushGhagre-09/webhook.git"
 
 
         }

@@ -21,7 +21,7 @@ node {
 
         stage('Push changes')
          {
-            withCredentials([usernamePassword(credentialsId: '9a1cc700-c524-44ff-b78c-cddc92a4785e', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+            withCredentials([usernamePassword(credentialsId: '7df2302d-4ca7-41cc-a07f-81fc92b007d9', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
             
                 
                 bat "git config user.email '${env.GIT_EMAIL}'"

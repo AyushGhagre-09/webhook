@@ -30,11 +30,8 @@ node {
 
                 
 
-// Set the remote URL securely without exposing the token in the script
-    bat(script: "git remote set-url origin https://${env.GITHUB_TOKEN}@github.com/%GIT_USERNAME%/webhook.git", returnStdout: true).trim()
-
-    // Now push changes using the securely set remote URL
-    bat "git push origin main"
+          // Push changes using the PAT for authentication
+                bat "git push https://${env.GITHUB_TOKEN}@github.com/${env.GIT_USERNAME}/webhook.git"
         }
            
          } 

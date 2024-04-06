@@ -2,6 +2,6 @@ node
 {
     stage("print")
     {
-    echo "hello world: ${env.BRANCH_NAME}"
+  echo "hello world: ${env.BRANCH_NAME}"
     }
 }

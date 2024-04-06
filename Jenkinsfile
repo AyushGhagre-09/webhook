@@ -4,7 +4,7 @@ node {
     def buildProj = new org.win.BuildSteps()
     def postBuild = new org.win.PostBuildSteps()
     def helpers = new org.settings.HelperFunctions()
-    def gitVersion = new org.tools.GitVersion()
+    // def gitVersion = new org.tools.GitVersion()
     def branchName = env.BRANCH_NAME 
     def projectName = 'CatchPoint.Hawk.FrontEnd.HawkUI' //this will be your sln name minus the sln
     currentBuild.result="SUCCESS"

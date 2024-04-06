@@ -5,6 +5,6 @@ node {
     def postBuild = new org.win.PostBuildSteps()
     def helpers = new org.settings.HelperFunctions()
     helpers.call("ayush")
-    helpers.setLogProperties()
+    //helpers.setLogProperties()
 
 }

@@ -1,4 +1,4 @@
-
+@Library('shared-library') 
 node {
 
     def buildProj = new org.win.BuildSteps()

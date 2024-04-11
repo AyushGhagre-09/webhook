@@ -11,7 +11,7 @@ node {
             def utils = new org.settings.HelperFunctions()
             def result = utils.add(5, 4)
             echo "The result is ${result}"
-            echo "this is shared library"
+           
         }
     }
 }

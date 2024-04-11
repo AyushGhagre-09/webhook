@@ -9,7 +9,7 @@ node {
         script {
             // Use the Utils class from the shared library
             def utils = new org.settings.HelperFunctions()
-           
+            echo utils
            
         }
     }

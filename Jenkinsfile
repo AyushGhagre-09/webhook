@@ -9,7 +9,9 @@ node {
         script {
             // Use the Utils class from the shared library
             def utils = new org.settings.HelperFunctions()
-            echo utils
+            int a=10,b=20,c=30;
+            int sum =a+b+c;
+            print("sum is : "+sum)
            
         }
     }

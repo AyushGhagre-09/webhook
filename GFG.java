@@ -39,7 +39,7 @@ class GFG {
 					{ 2, 2, 2, 2 },
 					{ 3, 3, 3, 3 },
 					{ 4, 4, 4, 4 } };
-		// Print the matrices A
+		
 		System.out.print("\nMatrix A:");
 		System.out.println();
 		printMatrix(A, size, size);

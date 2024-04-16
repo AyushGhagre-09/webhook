@@ -16,8 +16,7 @@ class GFG {
 		}
 	}
 
-	// Function to add the two matrices
-	// and store in matrix C
+	
 	static int[][] add(int A[][], int B[][],
 					int size)
 	{
